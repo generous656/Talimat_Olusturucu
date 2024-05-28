@@ -95,7 +95,6 @@ def create_instruction():
     doc = Document()
     doc.add_heading('Talimat', 0)
     doc.add_paragraph(f"Tarih: {tarih}\n")
-    doc.add_paragraph(f"Sayın {hesap[0]} yetkilisi,\n")
     doc.add_paragraph(sablonlar[sablon_index].format(hesap_sirket_adi=hesap[0], hesap_vkn=hesap[1], hesap_banka_adi=hesap[2], hesap_banka_subesi=hesap[3], hesap_iban=hesap[4], hesap_para_birimi=hesap[5], alici_sirket_adi=alici[0], alici_firma_adres=alici[1], alici_banka=alici[2], alici_banka_adres=alici[3], alici_iban=alici[4], alici_swift=alici[5], alici_para_birimi=alici[6]))
     doc.add_heading('Alıcı Bilgileri:', level=1)
     p1 = doc.add_paragraph()
@@ -131,7 +130,7 @@ def create_instruction():
 
     doc.add_paragraph(f"Saygılarımızla,\n{hesap[0]}")
 
-    file_path = f"Instruction_{hesap[0]}_{alici[0]}_{timestamp}.docx"
+    file_path = f"talimatlar\Talimat_{alici[0]}_{tutar}_{hesap[5]}.docx"
     doc.save(file_path)
 
     flash(f"Talimat başarıyla oluşturuldu: {file_path}")

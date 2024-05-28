@@ -1,1 +1,3 @@
-{hesap_sirket_adi} (Vergi Kimlik Numarası: {hesap_vkn}) firmamızın şubenizde bulunan {hesap_iban} nolu hesabından aşağıda bilgileri verilen {alici_sirket_adi} alıcıya ödeme yapılmasını talep ediyoruz.
+Sayın {hesap_banka_adi} {hesap_banka_subesi} yetkilisi
+{hesap_sirket_adi} (Vergi Kimlik Numarası: {hesap_vkn}) firmamızın şubenizde bulunan {hesap_iban} nolu hesabından aşağıda bilgileri verilen {alici_sirket_adi} alıcıya ödeme yapılmasını talep ediyoruz.
+
