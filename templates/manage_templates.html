@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şablon Yönetimi</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Şablon Yönetimi</h1>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Yeni Şablon Ekle</h2>
+                <form action="/add_template" method="post">
+                    <div class="form-group">
+                        <label for="sablon">Şablon:</label>
+                        <textarea class="form-control" id="sablon" name="sablon" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Şablon Ekle</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Mevcut Şablonlar</h2>
+                <ul class="list-group">
+                    {% for sablon in sablonlar %}
+                        <li class="list-group-item">
+                            <pre>{{ sablon }}</pre>
+                            <form action="/delete_template" method="post" class="d-inline">
+                                <input type="hidden" name="index" value="{{ loop.index0 }}">
+                                <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                            </form>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <a href="/" class="btn btn-primary">Ana Sayfaya Dön</a>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-info mt-3">
+                    <ul class="mb-0">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Alıcı Ekle</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Yeni Alıcı Ekle</h1>
+        <form action="/add_recipient" method="post">
+            <div class="form-group">
+                <label for="alici_sirket_adi">Alıcı Şirket Adı:</label>
+                <input type="text" class="form-control" id="alici_sirket_adi" name="alici_sirket_adi" required>
+            </div>
+            <div class="form-group">
+                <label for="alici_firma_adres">Alıcı Firma Adresi:</label>
+                <input type="text" class="form-control" id="alici_firma_adres" name="alici_firma_adres" required>
+            </div>
+            <div class="form-group">
+                <label for="alici_banka">Alıcı Banka:</label>
+                <input type="text" class="form-control" id="alici_banka" name="alici_banka" required>
+            </div>
+            <div class="form-group">
+                <label for="alici_banka_adres">Alıcı Banka Adresi:</label>
+                <input type="text" class="form-control" id="alici_banka_adres" name="alici_banka_adres" required>
+            </div>
+            <div class="form-group">
+                <label for="alici_iban">Alıcı IBAN:</label>
+                <input type="text" class="form-control" id="alici_iban" name="alici_iban" required>
+            </div>
+            <div class="form-group">
+                <label for="alici_swift">SWIFT Kodu:</label>
+                <input type="text" class="form-control" id="alici_swift" name="alici_swift" required>
+            </div>
+            <div class="form-group">
+                <label for="alici_para_birimi">Para Birimi:</label>
+                <input type="text" class="form-control" id="alici_para_birimi" name="alici_para_birimi" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Alıcı Ekle</button>
+        </form>
+        <div class="mt-3">
+            <a href="/" class="btn btn-secondary">Geri Dön</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach(function(input) {
+                input.addEventListener('input', function(event) {
+                    var value = event.target.value;
+                    if (value.includes(',')) {
+                        event.target.value = value.replace(/,/g, '');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

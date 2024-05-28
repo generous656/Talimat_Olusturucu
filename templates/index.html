@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talimat Oluşturma</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Talimat Oluşturma</h1>
+        
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h2>Talimat Oluştur</h2>
+                <form action="/create_instruction" method="post">
+                    <div class="form-group">
+                        <label for="hesap">Hesap:</label>
+                        <select class="form-control" id="hesap" name="hesap" required>
+                            {% for hesap in hesaplar %}
+                                <option value="{{ loop.index0 }}">{{ hesap[0] }} - {{ hesap[2] }} - {{ hesap[5] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="alici">Alıcı:</label>
+                        <select class="form-control" id="alici" name="alici" required>
+                            {% for alici in alicilar %}
+                                <option value="{{ loop.index0 }}">{{ alici[0] }} - {{ alici[2] }} - {{ alici[6] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tutar">Tutar:</label>
+                        <input type="text" class="form-control" id="tutar" name="tutar" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="referans">Referans:</label>
+                        <input type="text" class="form-control" id="referans" name="referans" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sablon">Şablon:</label>
+                        <select class="form-control" id="sablon" name="sablon" required>
+                            {% for sablon in sablonlar %}
+                                <option value="{{ loop.index0 }}">{{ sablon }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Talimat Oluştur</button>
+                </form>
+            </div>
+        </div>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-info mt-3">
+                    <ul class="mb-0">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <a href="/add_account" class="btn btn-primary">Yeni Hesap Ekle</a>
+                <a href="/add_recipient" class="btn btn-primary">Yeni Alıcı Ekle</a>
+                <a href="/templates_info" class="btn btn-info">Şablonlar Hakkında Bilgi</a>
+                <a href="/manage_templates" class="btn btn-secondary">Şablon Yönetimi</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
